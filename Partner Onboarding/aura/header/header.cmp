@@ -1,0 +1,40 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="OnboardingService" description="Display a snapshot of the onboarding experience.">
+    
+    <aura:attribute name="text" type="String" default="Your Onboarding Journey," access="Global" /> 
+    <aura:attribute name="icon" type="String" default="utility:event" access="Global" /> 
+    <aura:attribute name="helpIcon" type="String" default="utility:info" access="Global" />
+    <aura:attribute name="showChannelManagerContactCard" type="Boolean" default="true" access="Global" />
+    <aura:attribute name="emailLabel" type="String" default="Email" access="Global" />
+    <aura:attribute name="phoneLabel" type="String" default="Phone" access="Global" />
+    <aura:attribute name="backgroundStyle" type="String" default="linear-gradient(to right, #c0392b 53%,#9b59b6 74%)"	access="Global" />
+    
+    <aura:handler name="init" value="{! this }" action="{! c.init }" />
+    
+    <aura:attribute name="percent" type="Integer" default="0" access="Private" />
+    <aura:attribute name="showPopover" type="Boolean" default="false" access="Private" />
+    <aura:attribute name="username" type="String" access="Private" />
+    
+	<div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_8-of-12 main">
+            <div class="main-text">
+            	<span class="icon"><lightning:icon iconName="{! v.icon }" size="medium" /></span>
+            	<span>{! v.text }&nbsp;{! v.username }</span>
+        	</div>
+        </div>
+        <div class="slds-col slds-size_1-of-12">
+            <aura:if isTrue="{! v.showChannelManagerContactCard }">
+                <span class="help-icon" onclick="{! c.showPopover }">
+                    <lightning:icon alternativeText="help" iconName="{! v.helpIcon }" size="small" />
+                </span>
+            </aura:if>
+        </div>
+        <div class="slds-col slds-size_3-of-12 counter">
+            <div>{! v.percent }%</div>
+            <div class="completed-text">Complete</div>
+        </div>
+        <c:ChannelMgrPopover show="{! v.showPopover }" 
+                             emailLabel="{! v.emailLabel }"
+                             phoneLabel="{! v.phoneLabel }"
+                             onClose="{! c.showPopover }"/>
+    </div>
+</aura:component>

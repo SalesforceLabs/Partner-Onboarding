@@ -1,0 +1,47 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="OnboardingService" description="Display the tasks included in a member’s onboarding journey.">
+    <aura:attribute name="format" type="String" access="global" default="tile" />
+    <aura:attribute name="stepsLabel" type="String" default="Step" access="global" />
+    
+    <!-- Colors -->
+    <aura:attribute name="completedColor" type="String" default="#16a085" access="global" />
+    <aura:attribute name="inprogressColor" type="String" default="#e67e22" access="global" />
+    <aura:attribute name="dueColor" type="String" default="#e74c3c" access="global" />
+    <aura:attribute name="overdueColor" type="String" default="#c0392b" access="global" />
+    
+    <aura:attribute name="tasks" type="Object[]" access="global" />
+    <aura:attribute name="tileType" default="2" type="Integer" access="global" />
+    
+    <aura:handler name="init" value="{! this }" action="{! c.init }" />	
+    
+    <div class="main-div" aura:id="overlay">
+        
+        
+        <aura:if isTrue="{! v.format == 'tile' }">
+            <div class="slds-grid slds-wrap">
+                <aura:iteration items="{! v.tasks }" var="t">
+                    
+                    <c:card task="{! t }"
+                            stepsLabel="{! v.stepsLabel }"
+                            completedColor="{! v.completedColor }"
+                            inprogressColor="{! v.inprogressColor }"
+                            dueColor="{! v.dueColor }"
+                            overdueColor="{! v.overdueColor }"
+                            onComplete="{! c.taskCompleted }"/>
+                </aura:iteration>
+            </div>
+        </aura:if>
+        <aura:if isTrue="{! v.format == 'list' }">
+            <div class="slds-grid slds-wrap">
+                <aura:iteration items="{! v.tasks }" var="t">
+                    <c:list task="{! t }"
+                            stepsLabel="{! v.stepsLabel }"
+                            completedColor="{! v.completedColor }"
+                            inprogressColor="{! v.inprogressColor }"
+                            dueColor="{! v.dueColor }"
+                            overdueColor="{! v.overdueColor }"
+                            onComplete="{! c.taskCompleted }"/>
+                </aura:iteration>
+            </div>
+        </aura:if>
+    </div>
+</aura:component>

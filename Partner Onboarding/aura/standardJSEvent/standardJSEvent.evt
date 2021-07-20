@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT" description="Event template" access="Public">
+    <aura:attribute name="domEvent" type="Object" access="Public" />
+    <aura:attribute name="value" type="Object" access="Public" />
+</aura:event>

@@ -1,0 +1,9 @@
+<design:component label="Onboarding Header">
+    <design:attribute name="text" label="Introductory Text" />
+    <design:attribute name="icon" label="Icon" />
+    <design:attribute name="showChannelManagerContactCard" label="Display channel manager contact information" />
+    <design:attribute name="helpIcon" label="Help Icon" />
+    <design:attribute name="emailLabel" label="Channel Manager Email" />
+    <design:attribute name="phoneLabel" label="Channel Manager Phone" />
+    <design:attribute name="backgroundStyle" label="Background" />
+</design:component>

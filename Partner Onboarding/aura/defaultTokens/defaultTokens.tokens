@@ -1,0 +1,6 @@
+<aura:tokens extends="force:base">
+    <aura:token name="categoryUnderline" value="6px solid grey" />
+    <aura:token name="productCardBackgroundColor" value="#16a085" />
+    <aura:token name="addButtonBackgroundColor" value="#2980b9" />
+    <aura:token name="addButtonHoverBackgroundColor" value="black" />
+</aura:tokens>

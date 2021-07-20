@@ -1,0 +1,55 @@
+<aura:component access="Public" controller="OnboardingService">
+    
+    <aura:attribute name="completedColor" type="String" access="Public" />
+    <aura:attribute name="inprogressColor" type="String" access="Public" />
+    <aura:attribute name="dueColor" type="String" access="Public" />
+    <aura:attribute name="overdueColor" type="String" access="Public" />
+    
+    <aura:attribute name="task" type="Object" access="Public" />
+    <aura:attribute name="format" type="String" access="Public" />
+    <aura:attribute name="stepsLabel" type="String" access="Public" />
+    <aura:attribute name="tileType" default="2" type="Integer" access="global" />
+    
+    <aura:attribute name="displayVideo" type="Boolean" default="false" access="Private" />
+    
+    <aura:registerEvent name="onComplete" type="c:standardJSEvent" description="Called when event is completed" access="GLOBAL" />
+    
+    <aura:if isTrue="{! v.displayVideo != true }">
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3 task">
+            <div class="task-card">
+                <div class="{! 'status ' + v.task.Status }">
+                    <span>{! v.task.Ptnr_Onbd_Fmwk__Computed_Status__c }</span>
+                </div>
+                <div class="slds-media slds-media_center">
+                    <div class="slds-media__figure">
+                        <span class="slds-avatar slds-avatar_large icon-image">
+                            <img src="{! v.task.Ptnr_Onbd_Fmwk__TemplateTask__r.Ptnr_Onbd_Fmwk__Image_Name__c ? v.task.Ptnr_Onbd_Fmwk__TemplateTask__r.Ptnr_Onbd_Fmwk__Image_Name__c : $Resource.NoImage  }" alt="{! v.task.Ptnr_Onbd_Fmwk__Category__c  }" />
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <span class="step">{! v.stepsLabel } #{! v.task.Seq }</span>
+                        <p class="title">{! v.task.Ptnr_Onbd_Fmwk__TemplateTask__r.Ptnr_Onbd_Fmwk__Category__c  }</p>
+                    </div>
+                </div>
+                <div class="description">
+                    <p>{! v.task.Ptnr_Onbd_Fmwk__TemplateTask__r.Ptnr_Onbd_Fmwk__Description__c  }</p>
+                </div>
+                <div class="action-button">
+                    <button class="action slds-button slds-button--brand" onclick="{! c.fireAction }">{! v.task.Ptnr_Onbd_Fmwk__TemplateTask__r.Ptnr_Onbd_Fmwk__Button_Label__c  }</button>
+                </div>
+            </div>
+        </div>
+    </aura:if>
+    <aura:if isTrue="{! v.displayVideo }">
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3 task">
+            <div class="task-card">
+                <div class="close-button" onclick="{! c.closeVideo }">
+                    <!--<lightning:buttonIcon iconName="utility:close" variant="bare" iconClass="brand" onclick="{! c.closeVideo }"/>-->
+                    <lightning:button variant="bare" class="close-button-icon" onclick="{! c.closeVideo }">X</lightning:button>
+                </div>
+                <iframe frameborder="0" aura:id="iFrame" >
+                </iframe>
+            </div>
+        </div>
+    </aura:if>
+</aura:component>

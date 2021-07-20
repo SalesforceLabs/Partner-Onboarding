@@ -1,0 +1,38 @@
+<aura:component access="Global" controller="OnboardingService">
+    
+    <aura:attribute name="show" type="Boolean" default="false" access="Public" />
+    <aura:attribute name="emailLabel" type="String" default="Email" access="Public" />
+    <aura:attribute name="phoneLabel" type="String" default="Phone" access="Public" />
+    
+    <aura:attribute name="fullName" type="String" access="Private" />
+    <aura:attribute name="email" type="String" access="Private" />
+    <aura:attribute name="phone" type="String" access="Private" />
+    <aura:attribute name="photoUrl" type="String" access="Private" />
+    <aura:attribute name="profileURL" type="String" access="Private" />
+    
+    
+    <aura:registerEvent name="onClose" type="c:standardJSEvent" description="Event fired when close button is clicked" access="Public" />
+    
+    <aura:handler name="init" value="{! this }" action="{! c.init }" />
+    
+    <div class="{! v.show ? 'active' : ''}">
+        <article class="slds-tile slds-media">
+            <div class="slds-media__figure">
+                <span class="slds-avatar slds-avatar_circle slds-avatar_large">
+                    <img alt="Photo" src="{! v.photoUrl }" title="{! v.fullName }" />
+                </span>
+            </div>
+            <div class="slds-media__body">
+                <h4 class="secondary-text">Your channel manager</h4>
+                <h3 class="slds-truncate name-text" title="{! v.fullName }"><a href="{! v.profileURL }">{! v.fullName }</a></h3>
+                <div class="slds-tile__detail slds-text-body_small">
+                    <div class="slds-text-color_weak slds-truncate" title="Email">{! v.emailLabel }:&nbsp;<a href="{! 'mailto:' + v.email }">{! v.email }</a></div>
+                    <div class="slds-text-color_weak slds-truncate" title="Email">{! v.phoneLabel }:&nbsp;<a href="{! 'tel:' + v.phone }">{! v.phone }</a></div>
+                </div>
+            </div>
+        </article>
+        <div class="close-icon" onclick="{! c.close }">
+            <lightning:icon iconName="utility:close" size="small" />
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,51 @@
+.THIS {
+    font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2.5em;
+    color: #FFF;
+    position: relative;
+}
+
+.THIS .main {
+    padding: 5px;
+}
+
+.THIS .counter {
+    padding: 5px;
+    text-align: center;
+    font-size: 0.9em;
+    line-height: 0.8em;
+}
+
+.THIS .completed-text {
+    color: #FFF;
+    font-size: 0.4em;
+    
+}
+
+.THIS .icon {
+    padding-left: 10px;
+}
+
+.THIS .main-text {
+    display:table;
+    position: relative;
+    font-size: 0.8em;
+    width: 100%;
+}
+
+.THIS .main-text span {
+    display:table-cell;
+    vertical-align:middle;
+}
+
+.THIS .help-icon {
+    /*position: absolute;
+    right: 10px;*/
+    cursor: pointer;
+}
+
+.THIS .main-text .icon svg {
+    fill: #FFF;
+}

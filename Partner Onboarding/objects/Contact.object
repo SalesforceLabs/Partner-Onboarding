@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Onboarding_Plan__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Onboarding Template</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Onboarding__c.Status__c</field>
+                <operation>equals</operation>
+                <value>Active</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Onboarding__c</referenceTo>
+        <relationshipLabel>Contacts</relationshipLabel>
+        <relationshipName>Contacts</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Onboarding_Start_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>This determines when the contact&apos;s onboarding journey needs to begin.When left blank, start date is taken to be the date when the onboarding plan is attached to the contact. It drives calculation of step duration.</inlineHelpText>
+        <label>Onboarding Start Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Onboarding_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Holds the current status of the onboarding plan for the contact. Key field to drive business process based on journey status. Use it to trigger notifications, posts, requesting of funds etc.</inlineHelpText>
+        <label>Onboarding Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Not Started</fullName>
+                    <default>true</default>
+                    <label>Not Started</label>
+                </value>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Role_Function__c</fullName>
+        <defaultValue>&quot;All&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <description>When defining a partner contact, use these values to broadly identify the contact&apos;s function. Field used to generate onboarding tasks apt for role if tasks are defined to map to functions</description>
+        <externalId>false</externalId>
+        <inlineHelpText>When defining a partner contact, use these values to broadly identify the contact&apos;s function. Field used to generate onboarding tasks apt for role if tasks are defined to map to functions</inlineHelpText>
+        <label>Role Function</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Partner_Persona</valueSetName>
+        </valueSet>
+    </fields>
+</CustomObject>

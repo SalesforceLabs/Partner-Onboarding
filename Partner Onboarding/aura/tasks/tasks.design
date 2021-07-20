@@ -1,0 +1,8 @@
+<design:component label="Onboarding Tasks">
+	<design:attribute name="format" label="Display As" datasource="tile,list"/>
+    <design:attribute name="stepsLabel" label="Label for Steps" />
+    <design:attribute name="completedColor" label="Completed Tag Color" description="Use a hex color code."/>
+    <design:attribute name="inprogressColor" label="In Progress Tag Color" description="Use a hex color code."/>
+    <design:attribute name="dueColor"  label="Due Tag Color" description="Use a hex color code."/>
+    <design:attribute name="overdueColor" label="Overdue Tag Color" description="Use a hex color code."/>
+</design:component>
